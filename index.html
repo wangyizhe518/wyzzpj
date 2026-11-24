@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d0c">
+  <meta name="description" content="王一喆的视觉设计作品集，收录品牌视觉、IP设计、AIGC探索与系列海报。">
+  <title>王一喆 — AI 视觉设计作品集</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d0c;
+      --panel: #121614;
+      --paper: #f1f0e9;
+      --muted: #a2aaa1;
+      --line: rgba(241, 240, 233, .16);
+      --lime: #d2df74;
+      --peach: #f2a5a5;
+      --serif: "Noto Serif SC", "Songti SC", Georgia, serif;
+      --sans: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+      --pointer-x: 0px;
+      --pointer-y: 0px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--paper);
+      font-family: var(--sans);
+      font-weight: 350;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      opacity: .08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    ::selection { color: var(--bg); background: var(--lime); }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--lime); outline-offset: 5px; }
+    .scroll-progress { position: fixed; z-index: 30; inset: 0 auto auto 0; width: 0; height: 2px; background: var(--lime); }
+    .site-header {
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 27px 5vw;
+    }
+    .brand-mark { font-family: var(--serif); font-size: 18px; letter-spacing: .08em; }
+    .brand-mark span { color: var(--lime); }
+    .main-nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 44px); }
+    .main-nav a, .header-note { color: var(--muted); font-size: 11px; letter-spacing: .11em; transition: color .25s ease; }
+    .main-nav a:hover { color: var(--paper); }
+    .header-note { padding-left: 24px; border-left: 1px solid var(--line); }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      height: min(100svh, 1040px);
+      display: grid;
+      align-items: center;
+      padding: 118px 5vw 55px;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 72% 52%, rgba(113, 139, 81, .15), transparent 35%),
+        radial-gradient(ellipse at 92% 16%, rgba(210, 137, 122, .11), transparent 29%),
+        linear-gradient(135deg, #0b0d0c 22%, #101511 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      right: -8vw;
+      top: 2%;
+      width: 64vw;
+      aspect-ratio: 1;
+      border: 1px solid rgba(210, 223, 116, .12);
+      border-radius: 50%;
+      box-shadow: 0 0 140px rgba(210, 223, 116, .045), inset 0 0 120px rgba(210, 223, 116, .035);
+      transform: rotateX(66deg) rotateZ(-17deg);
+      pointer-events: none;
+    }
+    .hero-inner { width: 100%; max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: minmax(360px, .92fr) 1.08fr; align-items: center; gap: 2vw; }
+    .hero-copy { position: relative; z-index: 2; max-width: 620px; padding-bottom: 16px; }
+    .eyebrow { color: var(--lime); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; }
+    .hero-copy .eyebrow { margin: 0 0 27px; }
+    .hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(42px, 6.2vw, 88px); line-height: 1.28; font-weight: 450; letter-spacing: -.075em; }
+    .hero h1 em { color: var(--lime); font-style: normal; }
+    .hero-description { max-width: 420px; margin: 25px 0 0; color: #aab0a8; font-size: 13px; line-height: 2.05; letter-spacing: .035em; }
+    .hero-actions { display: flex; align-items: center; gap: 25px; margin-top: 35px; }
+    .button-primary, .button-text { display: inline-flex; align-items: center; gap: 14px; font-size: 11px; letter-spacing: .12em; }
+    .button-primary { padding: 13px 18px; border: 1px solid rgba(210, 223, 116, .65); color: var(--lime); transition: color .3s, background .3s, transform .3s; }
+    .button-primary:hover { color: var(--bg); background: var(--lime); transform: translateY(-3px); }
+    .button-text { color: var(--muted); transition: color .25s, gap .25s; }
+    .button-text:hover { color: var(--paper); gap: 19px; }
+    .hero-index { position: absolute; left: 5vw; bottom: 35px; color: #737a72; font-size: 9px; letter-spacing: .18em; }
+    .hero-scroll { position: absolute; right: 5vw; bottom: 30px; color: #8b9189; font-size: 9px; letter-spacing: .17em; writing-mode: vertical-rl; }
+    .hero-scroll::after { content: ""; display: inline-block; height: 44px; width: 1px; margin-top: 13px; background: linear-gradient(var(--lime), transparent); }
+
+    .hero-scene {
+      position: relative;
+      width: 100%;
+      height: min(72vh, 690px);
+      min-height: 500px;
+      perspective: 1100px;
+      transform: perspective(1100px) rotateX(var(--scene-x, 0deg)) rotateY(var(--scene-y, 0deg));
+      transition: transform .45s cubic-bezier(.2,.7,.2,1);
+      transform-style: preserve-3d;
+    }
+    .scene-glow {
+      position: absolute;
+      left: 50%; top: 48%;
+      width: 54%; aspect-ratio: 1;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) translateZ(-70px);
+      background: radial-gradient(circle at 36% 34%, rgba(232, 241, 161, .82), rgba(143, 170, 98, .45) 24%, rgba(83, 112, 76, .14) 49%, transparent 72%);
+      filter: blur(2px);
+      box-shadow: 0 0 100px rgba(178, 204, 104, .14);
+      animation: glow-breathe 8s ease-in-out infinite alternate;
+    }
+    .scene-orbit {
+      position: absolute;
+      left: 50%; top: 49%;
+      width: 95%; aspect-ratio: 1;
+      border: 1px solid rgba(223, 228, 189, .15);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotateX(68deg) rotateZ(-19deg);
+      box-shadow: 0 0 55px rgba(206, 225, 127, .06);
+    }
+    .scene-orbit.orbit-inner { width: 72%; opacity: .55; transform: translate(-50%, -50%) rotateX(68deg) rotateZ(27deg); }
+    .hero-card {
+      position: absolute;
+      display: block;
+      width: 34%;
+      overflow: hidden;
+      padding: 0;
+      border: 1px solid rgba(241, 240, 233, .28);
+      background: #191d19;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .5);
+      transform-style: preserve-3d;
+      transition: transform .45s cubic-bezier(.2,.7,.2,1), border-color .35s, filter .35s;
+      animation: card-drift 8s ease-in-out infinite alternate;
+    }
+    .hero-card img { display: block; width: 100%; aspect-ratio: .91; object-fit: cover; filter: saturate(.8) brightness(.86); transition: transform .8s ease, filter .5s ease; }
+    .hero-card::after { content: ""; position: absolute; inset: 30% 0 0; background: linear-gradient(transparent, rgba(4, 6, 5, .84)); }
+    .hero-card span { position: absolute; z-index: 1; left: 13px; bottom: 12px; font-size: clamp(9px, 1vw, 12px); letter-spacing: .06em; }
+    .hero-card.card-1 { left: 3%; top: 16%; transform: translateZ(45px) rotateY(9deg) rotateZ(-8deg); animation-delay: -.8s; }
+    .hero-card.card-2 { right: 8%; top: 5%; width: 30%; transform: translateZ(6px) rotateY(-11deg) rotateZ(7deg); animation-delay: -3.4s; }
+    .hero-card.card-3 { left: 19%; bottom: 3%; width: 32%; transform: translateZ(72px) rotateY(8deg) rotateZ(-3deg); animation-delay: -5s; }
+    .hero-card.card-4 { right: 1%; bottom: 15%; width: 29%; transform: translateZ(28px) rotateY(-10deg) rotateZ(8deg); animation-delay: -2.1s; }
+    .hero-card:hover { z-index: 3; border-color: rgba(210, 223, 116, .8); filter: brightness(1.08); }
+    .hero-card:hover img { transform: scale(1.06); filter: saturate(1) brightness(.98); }
+    @keyframes card-drift { to { margin-top: -12px; } }
+    @keyframes glow-breathe { to { opacity: .64; transform: translate(-50%, -50%) translateZ(-70px) scale(1.08); } }
+
+    .section { padding: 116px 5vw; }
+    .section-wrap { max-width: 1320px; margin: 0 auto; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 42px; }
+    .section-heading .eyebrow { margin: 0 0 14px; }
+    .section-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(34px, 5vw, 58px); font-weight: 420; letter-spacing: -.06em; }
+    .section-heading > p { max-width: 330px; margin: 0 0 5px; color: var(--muted); font-size: 11px; line-height: 1.8; text-align: right; }
+    .work-section { background: #0b0d0c; }
+    .project-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 70px 24px; }
+    .project-card { grid-column: span 6; min-width: 0; }
+    .project-card:nth-child(4n + 1) { grid-column: span 7; }
+    .project-card:nth-child(4n + 2) { grid-column: span 5; margin-top: 105px; }
+    .project-card:nth-child(4n + 3) { grid-column: span 5; }
+    .project-card:nth-child(4n + 4) { grid-column: span 7; margin-top: 105px; }
+    .project-open {
+      width: 100%;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      border: 1px solid rgba(241, 240, 233, .11);
+      background: #151916;
+      text-align: left;
+      cursor: pointer;
+      transform: translateY(0);
+      transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .35s;
+    }
+    .project-open img { display: block; width: 100%; aspect-ratio: 1.44; object-fit: cover; transition: transform 1s cubic-bezier(.2,.7,.2,1), filter .6s; }
+    .project-open::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.58)); opacity: .72; transition: opacity .35s; }
+    .project-card:hover .project-open { transform: translateY(-7px); border-color: rgba(210, 223, 116, .5); }
+    .project-card:hover .project-open img { transform: scale(1.035); filter: saturate(1.05); }
+    .project-card:hover .project-open::after { opacity: .95; }
+    .project-number { position: absolute; z-index: 1; top: 17px; left: 18px; color: white; font-size: 9px; letter-spacing: .2em; text-shadow: 0 1px 12px #000; }
+    .project-cta { position: absolute; z-index: 1; right: 18px; bottom: 16px; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; font-size: 17px; transition: color .3s, background .3s, transform .3s; }
+    .project-card:hover .project-cta { color: var(--bg); background: var(--lime); border-color: var(--lime); transform: rotate(45deg); }
+    .project-meta { display: flex; justify-content: space-between; align-items: start; gap: 18px; padding-top: 17px; }
+    .project-meta h3 { margin: 0 0 7px; font-family: var(--serif); font-size: clamp(20px, 2.2vw, 27px); font-weight: 430; letter-spacing: -.035em; }
+    .project-meta p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.7; letter-spacing: .035em; }
+    .project-tags { flex: 0 0 auto; color: #8a9289; font-size: 9px; letter-spacing: .08em; text-align: right; line-height: 1.8; }
+
+    .approach-section { padding-top: 32px; padding-bottom: 120px; }
+    .approach { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .approach-item { min-height: 145px; padding: 24px 22px 24px 0; }
+    .approach-item + .approach-item { border-left: 1px solid var(--line); padding-left: 22px; }
+    .approach-item span { display: block; margin-bottom: 22px; color: var(--lime); font-size: 9px; letter-spacing: .18em; }
+    .approach-item h3 { margin: 0 0 8px; font-size: 15px; font-weight: 450; }
+    .approach-item p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.8; }
+
+    .about-section { position: relative; overflow: hidden; background: #111613; }
+    .about-section::before { content: ""; position: absolute; width: 55vw; aspect-ratio: 1; left: -25vw; bottom: -55%; border-radius: 50%; background: radial-gradient(circle, rgba(136, 163, 92, .12), transparent 68%); pointer-events: none; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(45px, 9vw, 135px); align-items: center; }
+    .portrait-wrap { position: relative; width: min(100%, 360px); margin: 0 auto; }
+    .portrait-wrap::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid rgba(210, 223, 116, .5); }
+    .portrait-wrap img { position: relative; display: block; width: 100%; max-height: 470px; object-fit: cover; object-position: center 28%; filter: saturate(.78); }
+    .portrait-caption { position: absolute; z-index: 1; left: -30px; bottom: 22px; padding: 10px 13px; color: var(--bg); background: var(--lime); font-size: 9px; letter-spacing: .13em; }
+    .about-copy .eyebrow { margin: 0 0 20px; }
+    .about-copy h2 { margin: 0 0 25px; font-family: var(--serif); font-size: clamp(35px, 5.2vw, 65px); line-height: 1.3; font-weight: 420; letter-spacing: -.06em; }
+    .about-copy h2 em { color: var(--lime); font-style: normal; }
+    .about-copy > p { max-width: 600px; color: #b3b9b1; font-size: 12px; line-height: 2.1; }
+    .about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 35px; max-width: 620px; margin-top: 35px; padding-top: 25px; border-top: 1px solid var(--line); }
+    .about-details small { display: block; margin-bottom: 8px; color: var(--lime); font-size: 8px; letter-spacing: .17em; }
+    .about-details span { color: var(--paper); font-size: 11px; }
+
+    .contact-section { padding-top: 112px; padding-bottom: 35px; }
+    .contact-main { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding-bottom: 82px; }
+    .contact-main .eyebrow { margin: 0 0 15px; }
+    .contact-main h2 { margin: 0; font-family: var(--serif); font-size: clamp(38px, 6vw, 76px); font-weight: 420; letter-spacing: -.065em; }
+    .contact-main h2 em { color: var(--lime); font-style: normal; }
+    .contact-card { min-width: 290px; padding: 0 0 14px; border-bottom: 1px solid rgba(241,240,233,.4); }
+    .contact-card > span { display: block; margin-bottom: 13px; color: var(--lime); font-size: 8px; letter-spacing: .18em; }
+    .contact-card > a { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: var(--paper); font-size: 14px; letter-spacing: .03em; transition: color .25s; }
+    .contact-card > a:hover { color: var(--lime); }
+    .contact-card b { font-size: 17px; font-weight: 400; }
+    .footer-line { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-top: 20px; border-top: 1px solid var(--line); color: #737b73; font-size: 9px; letter-spacing: .08em; }
+    .footer-line a { transition: color .25s; }
+    .footer-line a:hover { color: var(--paper); }
+
+    .project-dialog { width: min(1200px, 96vw); max-width: none; max-height: 92dvh; padding: 0; overflow: auto; border: 1px solid rgba(241,240,233,.2); color: var(--paper); background: #0c100e; box-shadow: 0 30px 110px rgba(0,0,0,.65); }
+    .project-dialog::backdrop { background: rgba(2,4,3,.82); backdrop-filter: blur(8px); }
+    .dialog-shell { position: relative; padding: clamp(24px, 5vw, 62px); }
+    .dialog-close { position: sticky; z-index: 3; top: 0; float: right; width: 42px; height: 42px; margin: -10px -10px 0 18px; border: 1px solid var(--line); border-radius: 50%; color: var(--paper); background: rgba(12,16,14,.88); cursor: pointer; font-size: 19px; transition: color .2s, border-color .2s, transform .2s; }
+    .dialog-close:hover { color: var(--lime); border-color: var(--lime); transform: rotate(90deg); }
+    .case-intro { display: grid; grid-template-columns: minmax(0,1fr) 190px; gap: 36px; align-items: end; padding: 8px 0 30px; border-bottom: 1px solid var(--line); }
+    .case-intro .eyebrow { margin: 0 0 14px; }
+    .case-intro h2 { margin: 0 0 12px; font-family: var(--serif); font-size: clamp(36px, 5vw, 62px); font-weight: 420; letter-spacing: -.06em; }
+    .case-intro-copy { max-width: 700px; margin: 0; color: #adb4ac; font-size: 12px; line-height: 2; }
+    .case-class { justify-self: end; max-width: 190px; color: #8f988f; font-size: 10px; line-height: 1.9; text-align: right; }
+    .case-class b { display: block; margin-bottom: 5px; color: var(--lime); font-size: 8px; letter-spacing: .18em; font-weight: 500; }
+    .case-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+    .case-tags span { padding: 6px 9px; border: 1px solid var(--line); color: #bec4ba; font-size: 9px; letter-spacing: .04em; }
+    .case-explorer { display: grid; grid-template-columns: minmax(0,1fr) 250px; gap: clamp(22px, 3vw, 42px); align-items: stretch; padding: 30px 0 27px; }
+    .case-stage { position: relative; min-width: 0; min-height: 435px; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(241,240,233,.13); background: radial-gradient(ellipse at 50% 45%, #2b3427, #131713 67%); isolation: isolate; }
+    .case-stage::before { content: ""; position: absolute; z-index: -1; inset: 8% 12%; border: 1px solid rgba(210,223,116,.18); border-radius: 50%; transform: rotateX(66deg) rotateZ(-18deg); box-shadow: 0 0 80px rgba(210,223,116,.07); }
+    .case-stage::after { content: ""; position: absolute; inset: auto 0 0; height: 27%; background: linear-gradient(transparent, rgba(4,6,5,.44)); pointer-events: none; }
+    .case-art { display: block; width: min(92%, 780px); max-height: 390px; object-fit: contain; box-shadow: 0 22px 70px rgba(0,0,0,.28); animation: art-arrive .42s cubic-bezier(.2,.7,.2,1) both; }
+    .case-art { transition: opacity .24s ease, transform .24s ease; }
+    .case-stage.is-changing .case-art { opacity: .2; transform: translateY(8px) scale(.985); }
+    .case-art.is-phone { width: auto; height: min(405px, 70vh); max-height: none; padding: 5px; border: 5px solid #20251f; border-radius: 25px; background: #f8f8f5; box-shadow: 0 26px 80px rgba(0,0,0,.5); }
+    .case-art.is-poster { width: auto; height: min(405px, 70vh); max-height: none; border: 8px solid #efece3; box-shadow: 0 22px 65px rgba(0,0,0,.48); }
+    .case-stage--peony { background: radial-gradient(ellipse at 52% 40%, #493331, #171512 67%); }
+    .case-stage--bamboo { background: radial-gradient(ellipse at 52% 48%, #34482d, #111713 68%); }
+    .case-stage--campus { background: radial-gradient(ellipse at 52% 48%, #354454, #111419 70%); }
+    .case-stage--series { background: radial-gradient(ellipse at 52% 48%, #34364a, #111214 70%); }
+    .case-stage--series::before { border-color: rgba(185,177,226,.18); box-shadow: 0 0 80px rgba(185,177,226,.07); }
+    @keyframes art-arrive { from { opacity: .25; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .case-stage-caption { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 14px; display: flex; justify-content: space-between; gap: 15px; color: rgba(245,245,237,.82); font-size: 9px; letter-spacing: .08em; }
+    .case-stage-caption span:last-child { color: rgba(245,245,237,.54); text-align: right; }
+    .case-notes { display: flex; flex-direction: column; min-width: 0; padding: 5px 0; }
+    .case-notes-label { margin: 0 0 12px; color: var(--lime); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; }
+    .case-notes h3 { margin: 0 0 10px; font-family: var(--serif); font-size: clamp(21px, 2.4vw, 29px); font-weight: 420; line-height: 1.45; letter-spacing: -.04em; }
+    .case-notes > p { margin: 0; color: #aeb6ac; font-size: 11px; line-height: 2; }
+    .case-step-list { display: grid; gap: 7px; margin-top: 24px; }
+    .case-step { width: 100%; display: grid; grid-template-columns: 31px minmax(0,1fr) 14px; gap: 8px; align-items: center; padding: 10px 9px; border: 1px solid transparent; color: #8f988f; background: transparent; text-align: left; cursor: pointer; transition: border-color .25s, color .25s, background .25s, transform .25s; }
+    .case-step:hover { color: var(--paper); transform: translateX(3px); }
+    .case-step[aria-selected="true"] { border-color: rgba(210,223,116,.34); color: var(--paper); background: rgba(210,223,116,.055); }
+    .case-step-no { color: #717970; font-size: 9px; letter-spacing: .08em; }
+    .case-step[aria-selected="true"] .case-step-no { color: var(--lime); }
+    .case-step-name { font-size: 10px; line-height: 1.5; }
+    .case-step-arrow { justify-self: end; color: var(--lime); opacity: 0; transition: opacity .2s, transform .2s; }
+    .case-step[aria-selected="true"] .case-step-arrow { opacity: 1; transform: translateX(2px); }
+    .case-hint { margin: auto 0 0; padding-top: 18px; color: #747d74; font-size: 9px; line-height: 1.8; }
+    .case-next { width: 100%; display: flex; justify-content: space-between; gap: 18px; align-items: center; padding: 18px 0 0; border: 0; border-top: 1px solid var(--line); color: #9fa69d; background: none; text-align: left; cursor: pointer; transition: color .2s; }
+    .case-next:hover { color: var(--lime); }
+    .case-next small { display: block; margin-bottom: 5px; color: #737c72; font-size: 8px; letter-spacing: .16em; }
+    .case-next strong { font-size: 11px; font-weight: 450; }
+    .case-next-arrow { font-size: 20px; }
+
+    [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1); }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    .project-card:nth-child(2) { transition-delay: .08s; }
+    .project-card:nth-child(3) { transition-delay: .15s; }
+    .project-card:nth-child(4) { transition-delay: .22s; }
+
+    .cursor-dot, .cursor-ring { display: none; }
+    @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      .cursor-dot, .cursor-ring { display: block; position: fixed; z-index: 40; top: 0; left: 0; border-radius: 50%; pointer-events: none; opacity: 0; transform: translate3d(-50%, -50%, 0); transition: opacity .2s ease, width .25s ease, height .25s ease, border-color .25s ease, background .25s ease; }
+      .cursor-dot.is-active, .cursor-ring.is-active { opacity: 1; }
+      .cursor-dot { width: 4px; height: 4px; background: var(--lime); }
+      .cursor-ring { width: 34px; height: 34px; border: 1px solid rgba(210,223,116,.55); }
+      .cursor-ring.is-hover { width: 58px; height: 58px; border-color: var(--lime); background: rgba(210,223,116,.08); }
+    }
+    @media (max-width: 900px) {
+      .hero { height: auto; min-height: 940px; padding-top: 150px; padding-bottom: 90px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 16px; }
+      .hero-copy { max-width: 720px; }
+      .hero h1 { font-size: clamp(45px, 9vw, 78px); }
+      .hero-scene { width: min(100%, 700px); height: 510px; min-height: 0; margin: -5px auto 0; }
+      .hero-index { bottom: 22px; }
+      .hero-scroll { bottom: 17px; }
+      .section { padding: 86px 6vw; }
+      .project-card:nth-child(n) { grid-column: span 6; margin-top: 0; }
+      .project-card:nth-child(even) { margin-top: 70px; }
+      .about-grid { gap: 50px; }
+    }
+    @media (max-width: 620px) {
+      .site-header { padding: 21px 6vw; }
+      .brand-mark { font-size: 16px; }
+      .main-nav { gap: 15px; }
+      .main-nav a { font-size: 9px; }
+      .header-note { display: none; }
+      .hero { min-height: 880px; padding: 128px 6vw 65px; }
+      .hero h1 { font-size: clamp(43px, 12vw, 62px); }
+      .hero-description { max-width: 92%; font-size: 11px; }
+      .hero-actions { margin-top: 25px; }
+      .hero-scene { height: 390px; margin-top: 15px; }
+      .hero-card { width: 37%; }
+      .hero-card.card-1 { left: 1%; top: 12%; }
+      .hero-card.card-2 { right: 8%; top: 1%; width: 31%; }
+      .hero-card.card-3 { left: 16%; bottom: 1%; width: 36%; }
+      .hero-card.card-4 { right: 0; bottom: 12%; width: 31%; }
+      .hero-card span { left: 8px; bottom: 8px; font-size: 8px; }
+      .scene-glow { width: 64%; }
+      .section { padding: 72px 6vw; }
+      .section-heading { align-items: start; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+      .section-heading > p { text-align: left; }
+      .project-grid { grid-template-columns: 1fr; gap: 42px; }
+      .project-card:nth-child(n) { grid-column: 1; margin-top: 0; }
+      .project-open img { aspect-ratio: 1.24; }
+      .project-meta { gap: 8px; }
+      .project-tags { font-size: 8px; }
+      .approach-section { padding-top: 5px; }
+      .approach { grid-template-columns: 1fr 1fr; }
+      .approach-item { min-height: 125px; padding: 18px 12px 18px 0; }
+      .approach-item + .approach-item { padding-left: 12px; }
+      .approach-item:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
+      .approach-item:nth-child(4) { border-top: 1px solid var(--line); }
+      .approach-item span { margin-bottom: 15px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .portrait-wrap { width: min(72%, 300px); }
+      .about-copy h2 { font-size: 42px; }
+      .about-details { gap: 18px; }
+      .contact-main { align-items: start; flex-direction: column; gap: 26px; padding-bottom: 58px; }
+      .contact-card { width: min(100%, 360px); min-width: 0; }
+      .footer-line { font-size: 8px; }
+      .project-dialog { width: 100vw; max-width: 100vw; max-height: 100dvh; height: 100dvh; margin: 0; border: 0; }
+      .dialog-shell { padding: 22px 18px; }
+      .case-intro { grid-template-columns: 1fr; gap: 12px; padding-top: 8px; }
+      .case-intro-copy { font-size: 11px; }
+      .case-class { justify-self: start; max-width: none; text-align: left; }
+      .case-class b { display: inline; margin: 0 8px 0 0; }
+      .case-explorer { grid-template-columns: 1fr; gap: 19px; padding-top: 19px; }
+      .case-stage { min-height: 320px; }
+      .case-art { max-height: 285px; }
+      .case-art.is-phone, .case-art.is-poster { height: 285px; }
+      .case-step-list { display: flex; overflow-x: auto; gap: 7px; padding-bottom: 5px; margin-top: 16px; }
+      .case-step { flex: 0 0 auto; width: auto; min-width: 112px; grid-template-columns: 24px auto; padding: 9px 11px; }
+      .case-step-arrow { display: none; }
+      .case-hint { margin-top: 10px; padding-top: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand-mark" href="#home" aria-label="王一喆，回到首页">W<span>·</span>Y</a>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#work">作品</a>
+      <a href="#about">关于</a>
+      <a href="#contact">联系</a>
+    </nav>
+    <span class="header-note">VISUAL DESIGN / PORTFOLIO</span>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">王一喆 &nbsp;·&nbsp; 视觉设计学生</p>
+          <h1 id="hero-title">让图像<br>连接文化<br><em>与想象。</em></h1>
+          <p class="hero-description">以 AIGC 为创作工具，围绕在地文化、角色系统与视觉叙事，完成从概念到延展应用的设计提案。</p>
+          <div class="hero-actions">
+            <a class="button-primary" href="#work">浏览精选作品 <span>↘</span></a>
+            <a class="button-text" href="#about">认识我 <span>↗</span></a>
+          </div>
+        </div>
+
+        <div class="hero-scene" aria-label="四个精选项目的立体影像展示">
+          <div class="scene-glow" aria-hidden="true"></div>
+          <div class="scene-orbit" aria-hidden="true"></div>
+          <div class="scene-orbit orbit-inner" aria-hidden="true"></div>
+          <a class="hero-card card-1" href="#work" aria-label="浏览萌游芍乡项目"><img src="assets/portfolio/01-peony/teaser.jpg" alt="芍药田与角色组成的乡村文旅主视觉" fetchpriority="high"><span>01 &nbsp; 萌游芍乡</span></a>
+          <a class="hero-card card-2" href="#work" aria-label="浏览竹竹侠优选项目"><img src="assets/portfolio/02-bamboo/teaser.jpg" alt="竹林与竹竹侠角色组成的平台主视觉" fetchpriority="high"><span>02 &nbsp; 竹竹侠优选</span></a>
+          <a class="hero-card card-3" href="#work" aria-label="浏览校园视觉设计项目"><img src="assets/portfolio/03-campus/teaser.jpg" alt="校园湖景与大鹅角色组成的校园视觉" fetchpriority="high"><span>03 &nbsp; 校园视觉</span></a>
+          <a class="hero-card card-4" href="#work" aria-label="浏览系列视觉设计项目"><img src="assets/portfolio/case-crops/chair-poster-study.jpg" alt="柯布西耶椅子主题海报局部" fetchpriority="high"><span>04 &nbsp; 系列视觉</span></a>
+        </div>
+      </div>
+      <span class="hero-index">SELECTED WORKS &nbsp; / &nbsp; AI VISUAL DESIGN</span>
+      <span class="hero-scroll" aria-hidden="true">向下探索</span>
+    </section>
+
+    <section class="section work-section" id="work">
+      <div class="section-wrap">
+        <div class="section-heading" data-reveal>
+          <div><p class="eyebrow">Selected works &nbsp; / &nbsp; 01—04</p><h2>精选项目</h2></div>
+          <p>从地方文化到校园日常，探索角色、图像与设计系统如何形成自己的表达。</p>
+        </div>
+        <div class="project-grid" id="projectGrid" aria-label="精选设计项目"></div>
+      </div>
+    </section>
+
+    <section class="section approach-section" aria-label="设计关注方向">
+      <div class="section-wrap">
+        <div class="approach" data-reveal>
+          <article class="approach-item"><span>01 / CULTURE</span><h3>文化转译</h3><p>从地方故事与生活场景中提取视觉线索。</p></article>
+          <article class="approach-item"><span>02 / CHARACTER</span><h3>角色构建</h3><p>让形象拥有性格，并能在不同媒介中延展。</p></article>
+          <article class="approach-item"><span>03 / AIGC</span><h3>图像生成</h3><p>通过生成、筛选与迭代寻找合适的视觉方向。</p></article>
+          <article class="approach-item"><span>04 / SYSTEM</span><h3>系统延展</h3><p>把核心视觉落到应用场景与具体触点。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="section-wrap about-grid">
+        <div class="portrait-wrap" data-reveal>
+          <img src="assets/portfolio/portrait.webp" alt="王一喆个人头像" loading="lazy">
+          <span class="portrait-caption">VISUAL DESIGN STUDENT</span>
+        </div>
+        <div class="about-copy" data-reveal>
+          <p class="eyebrow">A little about me</p>
+          <h2>你好，我是<br><em>王一喆。</em></h2>
+          <p>一名视觉设计学生，关注 AIGC 如何帮助把地方文化与日常体验转译成易于识别的图像、角色和设计系统。喜欢从一个清晰的概念出发，再让它逐步长成完整的视觉表达。</p>
+          <div class="about-details">
+            <div><small>STUDY</small><span>浙江科技大学 · 产品设计</span></div>
+            <div><small>FOCUS</small><span>品牌视觉 · IP设计 · AIGC</span></div>
+            <div><small>INTEREST</small><span>在地文化 · 视觉叙事</span></div>
+            <div><small>TOOLS</small><span>Figma · Photoshop · Illustrator · Canva</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="section-wrap">
+        <div class="contact-main">
+          <div><p class="eyebrow">Let's make something meaningful</p><h2>期待下一次<br><em>视觉相遇。</em></h2></div>
+          <div class="contact-card">
+            <span>EMAIL / 欢迎交流</span>
+            <a href="mailto:1227920795@qq.com">1227920795@qq.com <b aria-hidden="true">↗</b></a>
+          </div>
+        </div>
+        <footer class="footer-line">
+          <span>© 2026 王一喆 · 视觉设计作品集</span>
+          <span>以作品为线索，持续探索</span>
+          <a href="#home">回到顶部 ↑</a>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="project-dialog" id="projectDialog" aria-labelledby="caseTitle">
+    <div class="dialog-shell">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="关闭项目详情">×</button>
+      <div id="caseContent"></div>
+    </div>
+  </dialog>
+
+  <script>
+    const projects = [
+      {
+        title: "萌游芍乡",
+        english: "PEONY TRAILS",
+        category: "乡村文旅品牌视觉",
+        tags: ["品牌视觉", "IP设计", "AIGC探索"],
+        cover: "assets/portfolio/01-peony/teaser.jpg",
+        alt: "芍药田、古桥与萌宠角色组成的乡村文旅主视觉",
+        summary: "把芍药、萌宠与乡村游玩连接成一套品牌视觉提案，并继续延展角色识别与礼盒触点。",
+        focus: "从芍药文化与萌宠体验出发",
+        mode: "peony",
+        interaction: "角色生长线",
+        hint: "点选路径节点，看品牌印象如何从主视觉走向角色与应用。",
+        steps: [
+          { label: "主视觉", title: "先走进芍药花田", body: "芍药花田、古桥与角色共同出现，组成一条可以进入的乡村游览路径。", image: "assets/portfolio/01-peony/teaser.jpg", alt: "萌游芍乡的芍药花田与角色主视觉", caption: "品牌主视觉 / 芍药 × 萌宠 × 乡野游玩" },
+          { label: "角色迭代", title: "让花朵长成一个角色", body: "从花形、服饰到配色逐轮收敛，让角色既保留芍药线索，也适合进入不同场景。", image: "assets/portfolio/case-crops/peony-character-iterations.jpg", alt: "芍药女孩角色从概念草案到最终形象的迭代", caption: "角色生成 / 形态与风格迭代" },
+          { label: "品牌触点", title: "把游览记忆带回家", body: "包装与伴手礼把角色、花卉和地方物产放进日常使用的尺度里。", image: "assets/portfolio/case-crops/peony-touchpoints.jpg", alt: "芍药花束、伴手礼包装与桃子礼盒应用", caption: "视觉延展 / 鲜花礼盒与地方物产" }
+        ]
+      },
+      {
+        title: "竹竹侠优选",
+        english: "ZHU ZHU XIA · SELECT",
+        category: "竹林养护平台视觉",
+        tags: ["平台视觉", "角色设计", "界面延展"],
+        cover: "assets/portfolio/02-bamboo/teaser.jpg",
+        alt: "竹林场景与竹竹侠角色组成的平台主视觉",
+        summary: "以竹乡守护者“竹竹侠”为平台视觉线索，连接安吉好物、竹林内容与小程序界面。",
+        focus: "让一个角色成为平台的亲切入口",
+        mode: "bamboo",
+        interaction: "角色档案台",
+        hint: "切换角色设定、动作和界面，看看同一形象如何进入服务场景。",
+        steps: [
+          { label: "角色档案", title: "竹林里的守护者", body: "斗笠、竹叶和护林装备组成角色的主要识别线索。", image: "assets/portfolio/case-crops/bamboo-character-profile.jpg", alt: "竹竹侠角色正面设定", caption: "角色设定 / 竹乡守护者", artClass: "" },
+          { label: "三视探索", title: "转一圈，看清轮廓", body: "正面、侧面和背面一起检查服装、帽檐与身体比例是否连贯。", image: "assets/portfolio/case-crops/bamboo-turnaround.jpg", alt: "竹竹侠角色多角度造型探索", caption: "角色设定 / 轮廓与转面" },
+          { label: "动作表情", title: "让守护有了情绪", body: "表情和动作把巡护、采摘与分享等角色状态带进视觉表达。", image: "assets/portfolio/case-crops/bamboo-expressions.jpg", alt: "竹竹侠不同表情与动作的角色设定", caption: "角色延展 / 表情与动作" },
+          { label: "好物首页", title: "从好物开始探索", body: "首页把安吉好物、内容入口与角色提示放在同一条浏览路径上。", image: "assets/portfolio/case-crops/bamboo-home-screen.jpg", alt: "竹竹侠优选小程序首页界面", caption: "界面延展 / 好物推荐", artClass: "is-phone" },
+          { label: "竹迹页面", title: "把竹林变成可探索的场景", body: "竹林插画成为内容入口，让平台不只有商品，也呈现生态主题。", image: "assets/portfolio/case-crops/bamboo-browse-screen.jpg", alt: "竹竹侠优选小程序竹林探索页面", caption: "界面延展 / 竹林探索", artClass: "is-phone" },
+          { label: "个人中心", title: "角色陪伴服务流程", body: "个人中心延续绿色识别与角色头像，承接订单和用户服务入口。", image: "assets/portfolio/case-crops/bamboo-service-screen.jpg", alt: "竹竹侠优选小程序个人中心界面", caption: "界面延展 / 用户服务", artClass: "is-phone" }
+        ]
+      },
+      {
+        title: "校园视觉设计",
+        english: "CAMPUS VISUAL DESIGN",
+        category: "校园角色与节气传播",
+        tags: ["校园视觉", "角色延展", "系列海报"],
+        cover: "assets/portfolio/03-campus/teaser.jpg",
+        alt: "校园湖景与大鹅角色组成的校园视觉主画面",
+        summary: "以校园大鹅角色为主线，延展角色表情、校园物料与节气海报；季节海报再用不同动物形象呼应景物与气候。",
+        focus: "校园角色与四季视觉语言",
+        mode: "campus",
+        interaction: "校园节气翻页",
+        hint: "点选一个节气，海报会切换到对应的校园时刻。",
+        steps: [
+          { label: "冬至", title: "冬至 · 留一段安静", body: "水岸与冬日草木构成疏朗背景，用鹿的形象把季节的安静留在画面里。", image: "assets/portfolio/case-crops/campus-season-winter.jpg", alt: "校园冬至节气海报，冬日水岸与鹿的角色", caption: "节气海报 / 冬至", artClass: "is-poster" },
+          { label: "春分", title: "春分 · 让颜色醒来", body: "枝头的新绿和黄色小鸟构成轻快的春日场景，系列角色随季节变化。", image: "assets/portfolio/case-crops/campus-season-spring.jpg", alt: "校园春分节气海报，春枝与黄色小鸟", caption: "节气海报 / 春分", artClass: "is-poster" },
+          { label: "小满", title: "小满 · 回到熟悉的校园", body: "校园建筑成为故事发生的地点，水边的大鹅让场景多了一点生活气。", image: "assets/portfolio/case-crops/campus-season-summer.jpg", alt: "校园小满节气海报，校园建筑与水边大鹅", caption: "节气海报 / 小满", artClass: "is-poster" },
+          { label: "大暑", title: "大暑 · 给盛夏一点俏皮", body: "角色动作与浓密树影一起出现，把暑气转成轻松的视觉节奏。", image: "assets/portfolio/case-crops/campus-season-heat.jpg", alt: "校园大暑节气海报，夏日树影与角色", caption: "节气海报 / 大暑", artClass: "is-poster" },
+          { label: "立秋", title: "立秋 · 用湖蓝收尾", body: "蓝色校园场景接住季节转换，大鹅继续作为系列海报的共同线索。", image: "assets/portfolio/case-crops/campus-season-autumn.jpg", alt: "校园立秋节气海报，蓝色校园场景与大鹅", caption: "节气海报 / 立秋", artClass: "is-poster" }
+        ]
+      },
+      {
+        title: "系列视觉设计",
+        english: "POSTER STUDIES",
+        category: "海报与活动视觉练习",
+        tags: ["系列海报", "版式实验", "信息设计"],
+        cover: "assets/portfolio/case-crops/chair-poster-study.jpg",
+        alt: "柯布西耶椅子主题海报局部",
+        summary: "从经典椅子主题海报到“2050团聚”路线视觉，记录两组关于版式与信息组织的探索。",
+        focus: "在物件叙事与活动信息间切换",
+        mode: "series",
+        interaction: "双轨视觉切换",
+        hint: "在海报、路线和集章之间切换，探索同一活动的不同信息尺度。",
+        steps: [
+          { label: "椅子海报", title: "让一把椅子成为主角", body: "围绕经典家具组织图像、名称和字体层级，在克制的版面里试探视觉张力。", image: "assets/portfolio/case-crops/chair-poster-study.jpg", alt: "柯布西耶椅子主题海报设计", caption: "海报练习 / 椅子主题", artClass: "is-poster" },
+          { label: "活动路线", title: "把路线变成可读的邀请", body: "路线图连接活动地点、里程和沿途站点，让视觉信息同时承担导览功能。", image: "assets/portfolio/case-crops/2050-route-map.jpg", alt: "2050团聚活动路线地图与站点信息", caption: "活动视觉 / 路线与站点" },
+          { label: "里程印记", title: "让参与留下一个记号", body: "不同里程的圆形徽章形成一组可收集的视觉符号，为活动旅程留下阶段标记。", image: "assets/portfolio/case-crops/2050-distance-badges.jpg", alt: "2050团聚活动的一至五公里里程徽章", caption: "活动视觉 / 里程徽章" }
+        ]
+      }
+    ];
+
+    const projectGrid = document.getElementById("projectGrid");
+    const projectDialog = document.getElementById("projectDialog");
+    const caseContent = document.getElementById("caseContent");
+    let lastFocusedElement = null;
+    let activeProjectIndex = 0;
+
+    projects.forEach((project, index) => {
+      const card = document.createElement("article");
+      card.className = "project-card";
+      card.dataset.reveal = "";
+      card.innerHTML = `
+        <button class="project-open" type="button" aria-label="查看项目：${project.title}" data-project="${index}">
+          <img src="${project.cover}" alt="${project.alt}" loading="lazy">
+          <span class="project-number">0${index + 1} &nbsp; / &nbsp; SELECTED WORK</span>
+          <span class="project-cta" aria-hidden="true">↗</span>
+        </button>
+        <div class="project-meta">
+          <div><h3>${project.title}</h3><p>${project.category}</p></div>
+          <span class="project-tags">${project.tags.join(" · ")}</span>
+        </div>`;
+      projectGrid.appendChild(card);
+    });
+
+    function renderProject(index, opener) {
+      const project = projects[index];
+      if (!project) return;
+      if (!projectDialog.open) lastFocusedElement = opener;
+      activeProjectIndex = index;
+      const firstStep = project.steps[0];
+      const nextProject = projects[(index + 1) % projects.length];
+      const steps = project.steps.map((step, stepIndex) => `
+        <button class="case-step" id="caseTab-${stepIndex}" type="button" role="tab" aria-selected="${stepIndex === 0}" tabindex="${stepIndex === 0 ? 0 : -1}" aria-controls="caseStage" data-stage="${stepIndex}">
+          <span class="case-step-no">0${stepIndex + 1}</span><span class="case-step-name">${step.label}</span><span class="case-step-arrow" aria-hidden="true">↗</span>
+        </button>`).join("");
+
+      caseContent.innerHTML = `
+        <header class="case-intro">
+          <div>
+            <p class="eyebrow">${project.english} &nbsp; / &nbsp; 0${index + 1}</p>
+            <h2 id="caseTitle">${project.title}</h2>
+            <p class="case-intro-copy">${project.summary}</p>
+            <div class="case-tags">${project.tags.map(tag => `<span>${tag}</span>`).join("")}</div>
+          </div>
+          <div class="case-class"><b>PROJECT / ${project.category}</b>${project.focus}</div>
+        </header>
+        <div class="case-explorer">
+          <div class="case-stage case-stage--${project.mode}" id="caseStage" role="tabpanel" aria-live="polite" aria-labelledby="caseTab-0">
+            <img class="case-art ${firstStep.artClass || ""}" id="caseArt" src="${firstStep.image}" alt="${firstStep.alt}" decoding="async">
+            <div class="case-stage-caption"><span id="caseCaption">${firstStep.caption}</span><span>${String(index + 1).padStart(2, "0")} / 04 — VISUAL STUDY</span></div>
+          </div>
+          <aside class="case-notes">
+            <p class="case-notes-label">INTERACTIVE STUDY / ${project.interaction}</p>
+            <h3 id="caseStageTitle">${firstStep.title}</h3>
+            <p id="caseStageBody">${firstStep.body}</p>
+            <div class="case-step-list" role="tablist" aria-label="${project.title}的视觉切换">${steps}</div>
+            <p class="case-hint">${project.hint}</p>
+          </aside>
+        </div>
+        <button class="case-next" type="button" data-next-project>
+          <span><small>继续探索 / NEXT PROJECT</small><strong>${nextProject.title} · ${nextProject.category}</strong></span>
+          <span class="case-next-arrow" aria-hidden="true">↗</span>
+        </button>`;
+      projectDialog.setAttribute("aria-label", `${project.title}项目详情`);
+      if (!projectDialog.open) {
+        projectDialog.showModal();
+        document.getElementById("dialogClose").focus();
+      } else document.getElementById("dialogClose").focus();
+    }
+
+    function activateStage(stepIndex, moveFocus = false) {
+      const project = projects[activeProjectIndex];
+      const step = project?.steps[stepIndex];
+      if (!step) return;
+      const stage = document.getElementById("caseStage");
+      const art = document.getElementById("caseArt");
+      stage.classList.add("is-changing");
+      art.src = step.image;
+      art.alt = step.alt;
+      art.className = `case-art ${step.artClass || ""}`.trim();
+      document.getElementById("caseCaption").textContent = step.caption;
+      document.getElementById("caseStageTitle").textContent = step.title;
+      document.getElementById("caseStageBody").textContent = step.body;
+      stage.setAttribute("aria-labelledby", `caseTab-${stepIndex}`);
+      caseContent.querySelectorAll("[data-stage]").forEach((button, index) => {
+        button.setAttribute("aria-selected", String(index === stepIndex));
+        button.tabIndex = index === stepIndex ? 0 : -1;
+        if (index === stepIndex && moveFocus) button.focus();
+      });
+      requestAnimationFrame(() => stage.classList.remove("is-changing"));
+    }
+
+    projectGrid.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-project]");
+      if (button) renderProject(Number(button.dataset.project), button);
+    });
+    caseContent.addEventListener("click", (event) => {
+      const stepButton = event.target.closest("[data-stage]");
+      if (stepButton) activateStage(Number(stepButton.dataset.stage));
+      if (event.target.closest("[data-next-project]")) renderProject((activeProjectIndex + 1) % projects.length);
+    });
+    caseContent.addEventListener("keydown", (event) => {
+      const currentButton = event.target.closest("[data-stage]");
+      if (!currentButton) return;
+      const tabs = [...caseContent.querySelectorAll("[data-stage]")];
+      const currentIndex = tabs.indexOf(currentButton);
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (currentIndex + 1) % tabs.length;
+      else if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      activateStage(nextIndex, true);
+    });
+    document.getElementById("dialogClose").addEventListener("click", () => projectDialog.close());
+    projectDialog.addEventListener("click", (event) => {
+      if (event.target === projectDialog) projectDialog.close();
+    });
+    projectDialog.addEventListener("close", () => {
+      if (lastFocusedElement) lastFocusedElement.focus();
+    });
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      document.querySelectorAll("[data-reveal]").forEach(el => revealObserver.observe(el));
+    } else {
+      document.querySelectorAll("[data-reveal]").forEach(el => el.classList.add("is-visible"));
+    }
+
+    const progress = document.querySelector(".scroll-progress");
+    let scrollTicking = false;
+    function updateProgress() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const amount = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progress.style.width = `${Math.min(100, Math.max(0, amount * 100))}%`;
+      scrollTicking = false;
+    }
+    window.addEventListener("scroll", () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(updateProgress);
+        scrollTicking = true;
+      }
+    }, { passive: true });
+    updateProgress();
+
+    const finePointer = window.matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches;
+    if (finePointer) {
+      const dot = document.querySelector(".cursor-dot");
+      const ring = document.querySelector(".cursor-ring");
+      const scene = document.querySelector(".hero-scene");
+      window.addEventListener("pointermove", (event) => {
+        dot.style.left = `${event.clientX}px`;
+        dot.style.top = `${event.clientY}px`;
+        ring.style.left = `${event.clientX}px`;
+        ring.style.top = `${event.clientY}px`;
+        dot.classList.add("is-active");
+        ring.classList.add("is-active");
+        const bounds = scene.getBoundingClientRect();
+        if (event.clientX >= bounds.left && event.clientX <= bounds.right && event.clientY >= bounds.top && event.clientY <= bounds.bottom) {
+          const x = (event.clientX - bounds.left) / bounds.width - .5;
+          const y = (event.clientY - bounds.top) / bounds.height - .5;
+          scene.style.setProperty("--scene-y", `${x * 4}deg`);
+          scene.style.setProperty("--scene-x", `${-y * 4}deg`);
+        } else {
+          scene.style.setProperty("--scene-y", "0deg");
+          scene.style.setProperty("--scene-x", "0deg");
+        }
+      }, { passive: true });
+      document.addEventListener("pointerover", (event) => {
+        if (event.target.closest("a, button")) ring.classList.add("is-hover");
+      });
+      document.addEventListener("pointerout", (event) => {
+        if (event.target.closest("a, button") && !event.relatedTarget?.closest("a, button")) ring.classList.remove("is-hover");
+      });
+    }
+  </script>
+</body>
+</html>
