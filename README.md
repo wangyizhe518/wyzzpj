@@ -8,6 +8,7 @@
 
 ## 部署
 
-推送到 `main` 分支后，GitHub Actions 会自动发布到 GitHub Pages。工作流定义在 `.github/workflows/pages.yml`。
+网站为纯静态文件，无构建步骤。GitHub 仓库连接 Cloudflare Pages 后，推送到 `main` 分支会触发线上更新；线上地址为 `https://wyzzpj.pages.dev`。
 
-项目卡片、详情文案和交互阶段集中在 `index.html` 底部的 `projects` 数组。邮箱当前使用作品集 PDF 中的地址，发布前可直接替换。
+项目卡片、详情文案和交互阶段集中在 `index.html` 底部的 `projects` 数组。原图经过单件裁切后保存在 `assets/portfolio/case-crops/`，详情页使用独立的交互浏览方式。
+

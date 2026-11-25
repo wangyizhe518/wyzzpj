@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0d0c">
+    <meta name="theme-color" content="#090807">
   <meta name="description" content="王一喆的视觉设计作品集，收录品牌视觉、IP设计、AIGC探索与系列海报。">
   <title>王一喆 — AI 视觉设计作品集</title>
   <style>
     :root {
       color-scheme: dark;
-      --bg: #0b0d0c;
-      --panel: #121614;
-      --paper: #f1f0e9;
-      --muted: #a2aaa1;
-      --line: rgba(241, 240, 233, .16);
-      --lime: #d2df74;
+      --bg: #090807;
+      --panel: #12100e;
+      --paper: #f2eee8;
+      --muted: #aaa19a;
+      --line: rgba(242, 238, 232, .16);
+      --orange: #f36c21;
+      --orange-soft: #ff9a58;
       --peach: #f2a5a5;
       --serif: "Noto Serif SC", "Songti SC", Georgia, serif;
       --sans: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
@@ -42,11 +43,11 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
       mix-blend-mode: soft-light;
     }
-    ::selection { color: var(--bg); background: var(--lime); }
+    ::selection { color: var(--bg); background: var(--orange); }
     a { color: inherit; text-decoration: none; }
     button { color: inherit; font: inherit; }
-    button:focus-visible, a:focus-visible { outline: 2px solid var(--lime); outline-offset: 5px; }
-    .scroll-progress { position: fixed; z-index: 30; inset: 0 auto auto 0; width: 0; height: 2px; background: var(--lime); }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outline-offset: 5px; }
+    .scroll-progress { position: fixed; z-index: 30; inset: 0 auto auto 0; width: 0; height: 2px; background: var(--orange); }
     .site-header {
       position: absolute;
       z-index: 20;
@@ -59,7 +60,7 @@
       padding: 27px 5vw;
     }
     .brand-mark { font-family: var(--serif); font-size: 18px; letter-spacing: .08em; }
-    .brand-mark span { color: var(--lime); }
+    .brand-mark span { color: var(--orange); }
     .main-nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 44px); }
     .main-nav a, .header-note { color: var(--muted); font-size: 11px; letter-spacing: .11em; transition: color .25s ease; }
     .main-nav a:hover { color: var(--paper); }
@@ -75,9 +76,9 @@
       isolation: isolate;
       overflow: hidden;
       background:
-        radial-gradient(ellipse at 72% 52%, rgba(113, 139, 81, .15), transparent 35%),
-        radial-gradient(ellipse at 92% 16%, rgba(210, 137, 122, .11), transparent 29%),
-        linear-gradient(135deg, #0b0d0c 22%, #101511 100%);
+        radial-gradient(ellipse at 72% 52%, rgba(243, 108, 33, .16), transparent 35%),
+        radial-gradient(ellipse at 92% 16%, rgba(255, 154, 88, .11), transparent 29%),
+        linear-gradient(135deg, #090807 22%, #17100c 100%);
     }
     .hero::after {
       content: "";
@@ -87,28 +88,28 @@
       top: 2%;
       width: 64vw;
       aspect-ratio: 1;
-      border: 1px solid rgba(210, 223, 116, .12);
+      border: 1px solid rgba(243, 108, 33, .2);
       border-radius: 50%;
-      box-shadow: 0 0 140px rgba(210, 223, 116, .045), inset 0 0 120px rgba(210, 223, 116, .035);
+      box-shadow: 0 0 140px rgba(243, 108, 33, .06), inset 0 0 120px rgba(243, 108, 33, .035);
       transform: rotateX(66deg) rotateZ(-17deg);
       pointer-events: none;
     }
     .hero-inner { width: 100%; max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: minmax(360px, .92fr) 1.08fr; align-items: center; gap: 2vw; }
     .hero-copy { position: relative; z-index: 2; max-width: 620px; padding-bottom: 16px; }
-    .eyebrow { color: var(--lime); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; }
+    .eyebrow { color: var(--orange); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; }
     .hero-copy .eyebrow { margin: 0 0 27px; }
     .hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(42px, 6.2vw, 88px); line-height: 1.28; font-weight: 450; letter-spacing: -.075em; }
-    .hero h1 em { color: var(--lime); font-style: normal; }
+    .hero h1 em { color: var(--orange); font-style: normal; }
     .hero-description { max-width: 420px; margin: 25px 0 0; color: #aab0a8; font-size: 13px; line-height: 2.05; letter-spacing: .035em; }
     .hero-actions { display: flex; align-items: center; gap: 25px; margin-top: 35px; }
     .button-primary, .button-text { display: inline-flex; align-items: center; gap: 14px; font-size: 11px; letter-spacing: .12em; }
-    .button-primary { padding: 13px 18px; border: 1px solid rgba(210, 223, 116, .65); color: var(--lime); transition: color .3s, background .3s, transform .3s; }
-    .button-primary:hover { color: var(--bg); background: var(--lime); transform: translateY(-3px); }
+    .button-primary { padding: 13px 18px; border: 1px solid rgba(243, 108, 33, .65); color: var(--orange); transition: color .3s, background .3s, transform .3s; }
+    .button-primary:hover { color: var(--bg); background: var(--orange); transform: translateY(-3px); }
     .button-text { color: var(--muted); transition: color .25s, gap .25s; }
     .button-text:hover { color: var(--paper); gap: 19px; }
     .hero-index { position: absolute; left: 5vw; bottom: 35px; color: #737a72; font-size: 9px; letter-spacing: .18em; }
     .hero-scroll { position: absolute; right: 5vw; bottom: 30px; color: #8b9189; font-size: 9px; letter-spacing: .17em; writing-mode: vertical-rl; }
-    .hero-scroll::after { content: ""; display: inline-block; height: 44px; width: 1px; margin-top: 13px; background: linear-gradient(var(--lime), transparent); }
+    .hero-scroll::after { content: ""; display: inline-block; height: 44px; width: 1px; margin-top: 13px; background: linear-gradient(var(--orange), transparent); }
 
     .hero-scene {
       position: relative;
@@ -126,19 +127,19 @@
       width: 54%; aspect-ratio: 1;
       border-radius: 50%;
       transform: translate(-50%, -50%) translateZ(-70px);
-      background: radial-gradient(circle at 36% 34%, rgba(232, 241, 161, .82), rgba(143, 170, 98, .45) 24%, rgba(83, 112, 76, .14) 49%, transparent 72%);
+      background: radial-gradient(circle at 36% 34%, rgba(255, 154, 88, .74), rgba(243, 108, 33, .38) 24%, rgba(109, 48, 21, .14) 49%, transparent 72%);
       filter: blur(2px);
-      box-shadow: 0 0 100px rgba(178, 204, 104, .14);
+      box-shadow: 0 0 100px rgba(243, 108, 33, .18);
       animation: glow-breathe 8s ease-in-out infinite alternate;
     }
     .scene-orbit {
       position: absolute;
       left: 50%; top: 49%;
       width: 95%; aspect-ratio: 1;
-      border: 1px solid rgba(223, 228, 189, .15);
+      border: 1px solid rgba(255, 154, 88, .17);
       border-radius: 50%;
       transform: translate(-50%, -50%) rotateX(68deg) rotateZ(-19deg);
-      box-shadow: 0 0 55px rgba(206, 225, 127, .06);
+      box-shadow: 0 0 55px rgba(243, 108, 33, .07);
     }
     .scene-orbit.orbit-inner { width: 72%; opacity: .55; transform: translate(-50%, -50%) rotateX(68deg) rotateZ(27deg); }
     .hero-card {
@@ -148,7 +149,7 @@
       overflow: hidden;
       padding: 0;
       border: 1px solid rgba(241, 240, 233, .28);
-      background: #191d19;
+      background: #17110d;
       box-shadow: 0 24px 70px rgba(0, 0, 0, .5);
       transform-style: preserve-3d;
       transition: transform .45s cubic-bezier(.2,.7,.2,1), border-color .35s, filter .35s;
@@ -161,7 +162,7 @@
     .hero-card.card-2 { right: 8%; top: 5%; width: 30%; transform: translateZ(6px) rotateY(-11deg) rotateZ(7deg); animation-delay: -3.4s; }
     .hero-card.card-3 { left: 19%; bottom: 3%; width: 32%; transform: translateZ(72px) rotateY(8deg) rotateZ(-3deg); animation-delay: -5s; }
     .hero-card.card-4 { right: 1%; bottom: 15%; width: 29%; transform: translateZ(28px) rotateY(-10deg) rotateZ(8deg); animation-delay: -2.1s; }
-    .hero-card:hover { z-index: 3; border-color: rgba(210, 223, 116, .8); filter: brightness(1.08); }
+    .hero-card:hover { z-index: 3; border-color: rgba(243, 108, 33, .8); filter: brightness(1.08); }
     .hero-card:hover img { transform: scale(1.06); filter: saturate(1) brightness(.98); }
     @keyframes card-drift { to { margin-top: -12px; } }
     @keyframes glow-breathe { to { opacity: .64; transform: translate(-50%, -50%) translateZ(-70px) scale(1.08); } }
@@ -172,7 +173,7 @@
     .section-heading .eyebrow { margin: 0 0 14px; }
     .section-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(34px, 5vw, 58px); font-weight: 420; letter-spacing: -.06em; }
     .section-heading > p { max-width: 330px; margin: 0 0 5px; color: var(--muted); font-size: 11px; line-height: 1.8; text-align: right; }
-    .work-section { background: #0b0d0c; }
+    .work-section { background: #090807; }
     .project-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 70px 24px; }
     .project-card { grid-column: span 6; min-width: 0; }
     .project-card:nth-child(4n + 1) { grid-column: span 7; }
@@ -186,7 +187,7 @@
       overflow: hidden;
       padding: 0;
       border: 1px solid rgba(241, 240, 233, .11);
-      background: #151916;
+      background: #14100d;
       text-align: left;
       cursor: pointer;
       transform: translateY(0);
@@ -194,12 +195,12 @@
     }
     .project-open img { display: block; width: 100%; aspect-ratio: 1.44; object-fit: cover; transition: transform 1s cubic-bezier(.2,.7,.2,1), filter .6s; }
     .project-open::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.58)); opacity: .72; transition: opacity .35s; }
-    .project-card:hover .project-open { transform: translateY(-7px); border-color: rgba(210, 223, 116, .5); }
+    .project-card:hover .project-open { transform: translateY(-7px); border-color: rgba(243, 108, 33, .5); }
     .project-card:hover .project-open img { transform: scale(1.035); filter: saturate(1.05); }
     .project-card:hover .project-open::after { opacity: .95; }
     .project-number { position: absolute; z-index: 1; top: 17px; left: 18px; color: white; font-size: 9px; letter-spacing: .2em; text-shadow: 0 1px 12px #000; }
     .project-cta { position: absolute; z-index: 1; right: 18px; bottom: 16px; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; font-size: 17px; transition: color .3s, background .3s, transform .3s; }
-    .project-card:hover .project-cta { color: var(--bg); background: var(--lime); border-color: var(--lime); transform: rotate(45deg); }
+    .project-card:hover .project-cta { color: var(--bg); background: var(--orange); border-color: var(--orange); transform: rotate(45deg); }
     .project-meta { display: flex; justify-content: space-between; align-items: start; gap: 18px; padding-top: 17px; }
     .project-meta h3 { margin: 0 0 7px; font-family: var(--serif); font-size: clamp(20px, 2.2vw, 27px); font-weight: 430; letter-spacing: -.035em; }
     .project-meta p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.7; letter-spacing: .035em; }
@@ -209,85 +210,105 @@
     .approach { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .approach-item { min-height: 145px; padding: 24px 22px 24px 0; }
     .approach-item + .approach-item { border-left: 1px solid var(--line); padding-left: 22px; }
-    .approach-item span { display: block; margin-bottom: 22px; color: var(--lime); font-size: 9px; letter-spacing: .18em; }
+    .approach-item span { display: block; margin-bottom: 22px; color: var(--orange); font-size: 9px; letter-spacing: .18em; }
     .approach-item h3 { margin: 0 0 8px; font-size: 15px; font-weight: 450; }
     .approach-item p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.8; }
 
-    .about-section { position: relative; overflow: hidden; background: #111613; }
-    .about-section::before { content: ""; position: absolute; width: 55vw; aspect-ratio: 1; left: -25vw; bottom: -55%; border-radius: 50%; background: radial-gradient(circle, rgba(136, 163, 92, .12), transparent 68%); pointer-events: none; }
+    .about-section { position: relative; overflow: hidden; background: #100d0b; }
+    .about-section::before { content: ""; position: absolute; width: 55vw; aspect-ratio: 1; left: -25vw; bottom: -55%; border-radius: 50%; background: radial-gradient(circle, rgba(243, 108, 33, .12), transparent 68%); pointer-events: none; }
     .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(45px, 9vw, 135px); align-items: center; }
     .portrait-wrap { position: relative; width: min(100%, 360px); margin: 0 auto; }
-    .portrait-wrap::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid rgba(210, 223, 116, .5); }
+    .portrait-wrap::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid rgba(243, 108, 33, .5); }
     .portrait-wrap img { position: relative; display: block; width: 100%; max-height: 470px; object-fit: cover; object-position: center 28%; filter: saturate(.78); }
-    .portrait-caption { position: absolute; z-index: 1; left: -30px; bottom: 22px; padding: 10px 13px; color: var(--bg); background: var(--lime); font-size: 9px; letter-spacing: .13em; }
+    .portrait-caption { position: absolute; z-index: 1; left: -30px; bottom: 22px; padding: 10px 13px; color: var(--bg); background: var(--orange); font-size: 9px; letter-spacing: .13em; }
     .about-copy .eyebrow { margin: 0 0 20px; }
     .about-copy h2 { margin: 0 0 25px; font-family: var(--serif); font-size: clamp(35px, 5.2vw, 65px); line-height: 1.3; font-weight: 420; letter-spacing: -.06em; }
-    .about-copy h2 em { color: var(--lime); font-style: normal; }
+    .about-copy h2 em { color: var(--orange); font-style: normal; }
     .about-copy > p { max-width: 600px; color: #b3b9b1; font-size: 12px; line-height: 2.1; }
     .about-details { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 35px; max-width: 620px; margin-top: 35px; padding-top: 25px; border-top: 1px solid var(--line); }
-    .about-details small { display: block; margin-bottom: 8px; color: var(--lime); font-size: 8px; letter-spacing: .17em; }
+    .about-details small { display: block; margin-bottom: 8px; color: var(--orange); font-size: 8px; letter-spacing: .17em; }
     .about-details span { color: var(--paper); font-size: 11px; }
 
     .contact-section { padding-top: 112px; padding-bottom: 35px; }
     .contact-main { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding-bottom: 82px; }
     .contact-main .eyebrow { margin: 0 0 15px; }
     .contact-main h2 { margin: 0; font-family: var(--serif); font-size: clamp(38px, 6vw, 76px); font-weight: 420; letter-spacing: -.065em; }
-    .contact-main h2 em { color: var(--lime); font-style: normal; }
+    .contact-main h2 em { color: var(--orange); font-style: normal; }
     .contact-card { min-width: 290px; padding: 0 0 14px; border-bottom: 1px solid rgba(241,240,233,.4); }
-    .contact-card > span { display: block; margin-bottom: 13px; color: var(--lime); font-size: 8px; letter-spacing: .18em; }
+    .contact-card > span { display: block; margin-bottom: 13px; color: var(--orange); font-size: 8px; letter-spacing: .18em; }
     .contact-card > a { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: var(--paper); font-size: 14px; letter-spacing: .03em; transition: color .25s; }
-    .contact-card > a:hover { color: var(--lime); }
+    .contact-card > a:hover { color: var(--orange); }
     .contact-card b { font-size: 17px; font-weight: 400; }
     .footer-line { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding-top: 20px; border-top: 1px solid var(--line); color: #737b73; font-size: 9px; letter-spacing: .08em; }
     .footer-line a { transition: color .25s; }
     .footer-line a:hover { color: var(--paper); }
 
-    .project-dialog { width: min(1200px, 96vw); max-width: none; max-height: 92dvh; padding: 0; overflow: auto; border: 1px solid rgba(241,240,233,.2); color: var(--paper); background: #0c100e; box-shadow: 0 30px 110px rgba(0,0,0,.65); }
+    .project-dialog { width: min(1200px, 96vw); max-width: none; max-height: 92dvh; padding: 0; overflow: auto; border: 1px solid rgba(242,238,232,.2); color: var(--paper); background: #0b0908; box-shadow: 0 30px 110px rgba(0,0,0,.72); }
     .project-dialog::backdrop { background: rgba(2,4,3,.82); backdrop-filter: blur(8px); }
     .dialog-shell { position: relative; padding: clamp(24px, 5vw, 62px); }
-    .dialog-close { position: sticky; z-index: 3; top: 0; float: right; width: 42px; height: 42px; margin: -10px -10px 0 18px; border: 1px solid var(--line); border-radius: 50%; color: var(--paper); background: rgba(12,16,14,.88); cursor: pointer; font-size: 19px; transition: color .2s, border-color .2s, transform .2s; }
-    .dialog-close:hover { color: var(--lime); border-color: var(--lime); transform: rotate(90deg); }
+    .dialog-close { position: sticky; z-index: 3; top: 0; float: right; width: 42px; height: 42px; margin: -10px -10px 0 18px; border: 1px solid var(--line); border-radius: 50%; color: var(--paper); background: rgba(11,9,8,.9); cursor: pointer; font-size: 19px; transition: color .2s, border-color .2s, transform .2s; }
+    .dialog-close:hover { color: var(--orange); border-color: var(--orange); transform: rotate(90deg); }
     .case-intro { display: grid; grid-template-columns: minmax(0,1fr) 190px; gap: 36px; align-items: end; padding: 8px 0 30px; border-bottom: 1px solid var(--line); }
     .case-intro .eyebrow { margin: 0 0 14px; }
     .case-intro h2 { margin: 0 0 12px; font-family: var(--serif); font-size: clamp(36px, 5vw, 62px); font-weight: 420; letter-spacing: -.06em; }
     .case-intro-copy { max-width: 700px; margin: 0; color: #adb4ac; font-size: 12px; line-height: 2; }
     .case-class { justify-self: end; max-width: 190px; color: #8f988f; font-size: 10px; line-height: 1.9; text-align: right; }
-    .case-class b { display: block; margin-bottom: 5px; color: var(--lime); font-size: 8px; letter-spacing: .18em; font-weight: 500; }
+    .case-class b { display: block; margin-bottom: 5px; color: var(--orange); font-size: 8px; letter-spacing: .18em; font-weight: 500; }
     .case-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
     .case-tags span { padding: 6px 9px; border: 1px solid var(--line); color: #bec4ba; font-size: 9px; letter-spacing: .04em; }
+    .case-story { display: grid; grid-template-columns: 150px repeat(3, minmax(0,1fr)); gap: 0; margin-top: 23px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .case-story-label { padding: 19px 16px 19px 0; color: var(--orange-soft); font-size: 8px; line-height: 1.8; letter-spacing: .16em; }
+    .case-story-card { min-height: 126px; padding: 18px 18px 17px; border-left: 1px solid var(--line); }
+    .case-story-card small { display: block; margin-bottom: 12px; color: #827970; font-size: 8px; letter-spacing: .14em; }
+    .case-story-card h3 { margin: 0 0 8px; font-family: var(--serif); font-size: 15px; font-weight: 450; }
+    .case-story-card p { margin: 0; color: #aaa19a; font-size: 10px; line-height: 1.8; }
     .case-explorer { display: grid; grid-template-columns: minmax(0,1fr) 250px; gap: clamp(22px, 3vw, 42px); align-items: stretch; padding: 30px 0 27px; }
-    .case-stage { position: relative; min-width: 0; min-height: 435px; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(241,240,233,.13); background: radial-gradient(ellipse at 50% 45%, #2b3427, #131713 67%); isolation: isolate; }
-    .case-stage::before { content: ""; position: absolute; z-index: -1; inset: 8% 12%; border: 1px solid rgba(210,223,116,.18); border-radius: 50%; transform: rotateX(66deg) rotateZ(-18deg); box-shadow: 0 0 80px rgba(210,223,116,.07); }
+    .case-stage { position: relative; min-width: 0; min-height: 435px; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(242,238,232,.13); background: radial-gradient(ellipse at 50% 45%, #24150f, #100d0b 67%); isolation: isolate; }
+    .case-stage::before { content: ""; position: absolute; z-index: -1; inset: 8% 12%; border: 1px solid rgba(243,108,33,.23); border-radius: 50%; transform: rotateX(66deg) rotateZ(-18deg); box-shadow: 0 0 80px rgba(243,108,33,.08); }
     .case-stage::after { content: ""; position: absolute; inset: auto 0 0; height: 27%; background: linear-gradient(transparent, rgba(4,6,5,.44)); pointer-events: none; }
     .case-art { display: block; width: min(92%, 780px); max-height: 390px; object-fit: contain; box-shadow: 0 22px 70px rgba(0,0,0,.28); animation: art-arrive .42s cubic-bezier(.2,.7,.2,1) both; }
     .case-art { transition: opacity .24s ease, transform .24s ease; }
     .case-stage.is-changing .case-art { opacity: .2; transform: translateY(8px) scale(.985); }
-    .case-art.is-phone { width: auto; height: min(405px, 70vh); max-height: none; padding: 5px; border: 5px solid #20251f; border-radius: 25px; background: #f8f8f5; box-shadow: 0 26px 80px rgba(0,0,0,.5); }
-    .case-art.is-poster { width: auto; height: min(405px, 70vh); max-height: none; border: 8px solid #efece3; box-shadow: 0 22px 65px rgba(0,0,0,.48); }
-    .case-stage--peony { background: radial-gradient(ellipse at 52% 40%, #493331, #171512 67%); }
-    .case-stage--bamboo { background: radial-gradient(ellipse at 52% 48%, #34482d, #111713 68%); }
-    .case-stage--campus { background: radial-gradient(ellipse at 52% 48%, #354454, #111419 70%); }
-    .case-stage--series { background: radial-gradient(ellipse at 52% 48%, #34364a, #111214 70%); }
-    .case-stage--series::before { border-color: rgba(185,177,226,.18); box-shadow: 0 0 80px rgba(185,177,226,.07); }
+    .case-art.is-phone { width: auto; height: min(405px, 70vh); max-height: none; padding: 5px; border: 5px solid #24201d; border-radius: 25px; background: #171310; box-shadow: 0 26px 80px rgba(0,0,0,.5); }
+    .case-art.is-poster { width: auto; height: min(405px, 70vh); max-height: none; border: 8px solid #211b17; box-shadow: 0 22px 65px rgba(0,0,0,.48); }
+    .case-stage--peony { background: radial-gradient(ellipse at 52% 40%, #3e2118, #100d0b 67%); }
+    .case-stage--bamboo { background: radial-gradient(ellipse at 52% 48%, #29180f, #100d0b 68%); }
+    .case-stage--campus { background: radial-gradient(ellipse at 52% 48%, #241710, #100d0b 70%); }
+    .case-stage--series { background: radial-gradient(ellipse at 52% 48%, #1f1712, #100d0b 70%); }
+    .case-stage--series::before { border-color: rgba(243,108,33,.19); box-shadow: 0 0 80px rgba(243,108,33,.06); }
+    .case-stage--paired { min-height: 520px; }
+    .case-stage--paired::after { display: none; }
+    .case-art.is-transparent { box-shadow: none; filter: drop-shadow(0 20px 28px rgba(0,0,0,.18)); }
+    .case-art.is-editorial { border-radius: 3px; box-shadow: 0 24px 74px rgba(0,0,0,.45); }
+    .bamboo-pair { position: absolute; inset: 0 5% 31px; display: flex; justify-content: center; align-items: center; gap: clamp(8px, 2vw, 27px); }
+    .bamboo-mascot-wrap { position: relative; width: min(48%, 390px); height: 88%; display: flex; align-items: center; justify-content: center; }
+    .bamboo-mascot-wrap img { display: block; width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 24px 30px rgba(0,0,0,.32)); }
+    .bamboo-mascot-tag { position: absolute; left: 0; top: 7%; padding: 7px 9px; border: 1px solid rgba(243,108,33,.42); color: #f2c2a0; background: rgba(10,8,7,.7); font-size: 8px; letter-spacing: .14em; }
+    .bamboo-device { position: relative; z-index: 1; flex: 0 0 auto; width: clamp(185px, 26%, 260px); aspect-ratio: .49; padding: 7px; border: 1px solid rgba(255,255,255,.28); border-radius: 34px; background: linear-gradient(145deg, #312a25, #11100e 42%, #29221d); box-shadow: 0 28px 65px rgba(0,0,0,.58), 0 0 0 1px rgba(0,0,0,.8), inset 0 0 0 2px rgba(255,255,255,.06); transform: rotate(2deg); }
+    .bamboo-device::before { content: ""; position: absolute; z-index: 2; left: 50%; top: 10px; width: 28%; height: 13px; border-radius: 0 0 10px 10px; background: #12100e; transform: translateX(-50%); }
+    .bamboo-device-screen { width: 100%; height: 100%; overflow: hidden; border-radius: 27px; background: #e9e6df; }
+    .bamboo-device-screen img { display: block; width: 100%; height: 100%; object-fit: cover; transition: opacity .24s ease, transform .24s ease; }
+    .case-stage.is-changing .bamboo-device-screen img { opacity: .24; transform: translateY(7px) scale(.985); }
+    .bamboo-home-indicator { position: absolute; z-index: 3; bottom: 10px; left: 50%; width: 34%; height: 4px; border-radius: 99px; background: rgba(18,16,14,.76); transform: translateX(-50%); }
     @keyframes art-arrive { from { opacity: .25; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
     .case-stage-caption { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 14px; display: flex; justify-content: space-between; gap: 15px; color: rgba(245,245,237,.82); font-size: 9px; letter-spacing: .08em; }
     .case-stage-caption span:last-child { color: rgba(245,245,237,.54); text-align: right; }
     .case-notes { display: flex; flex-direction: column; min-width: 0; padding: 5px 0; }
-    .case-notes-label { margin: 0 0 12px; color: var(--lime); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; }
+    .case-notes-label { margin: 0 0 12px; color: var(--orange); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; }
     .case-notes h3 { margin: 0 0 10px; font-family: var(--serif); font-size: clamp(21px, 2.4vw, 29px); font-weight: 420; line-height: 1.45; letter-spacing: -.04em; }
     .case-notes > p { margin: 0; color: #aeb6ac; font-size: 11px; line-height: 2; }
     .case-step-list { display: grid; gap: 7px; margin-top: 24px; }
     .case-step { width: 100%; display: grid; grid-template-columns: 31px minmax(0,1fr) 14px; gap: 8px; align-items: center; padding: 10px 9px; border: 1px solid transparent; color: #8f988f; background: transparent; text-align: left; cursor: pointer; transition: border-color .25s, color .25s, background .25s, transform .25s; }
     .case-step:hover { color: var(--paper); transform: translateX(3px); }
-    .case-step[aria-selected="true"] { border-color: rgba(210,223,116,.34); color: var(--paper); background: rgba(210,223,116,.055); }
+    .case-step[aria-selected="true"] { border-color: rgba(243,108,33,.34); color: var(--paper); background: rgba(243,108,33,.055); }
     .case-step-no { color: #717970; font-size: 9px; letter-spacing: .08em; }
-    .case-step[aria-selected="true"] .case-step-no { color: var(--lime); }
+    .case-step[aria-selected="true"] .case-step-no { color: var(--orange); }
     .case-step-name { font-size: 10px; line-height: 1.5; }
-    .case-step-arrow { justify-self: end; color: var(--lime); opacity: 0; transition: opacity .2s, transform .2s; }
+    .case-step-arrow { justify-self: end; color: var(--orange); opacity: 0; transition: opacity .2s, transform .2s; }
     .case-step[aria-selected="true"] .case-step-arrow { opacity: 1; transform: translateX(2px); }
     .case-hint { margin: auto 0 0; padding-top: 18px; color: #747d74; font-size: 9px; line-height: 1.8; }
     .case-next { width: 100%; display: flex; justify-content: space-between; gap: 18px; align-items: center; padding: 18px 0 0; border: 0; border-top: 1px solid var(--line); color: #9fa69d; background: none; text-align: left; cursor: pointer; transition: color .2s; }
-    .case-next:hover { color: var(--lime); }
+    .case-next:hover { color: var(--orange); }
     .case-next small { display: block; margin-bottom: 5px; color: #737c72; font-size: 8px; letter-spacing: .16em; }
     .case-next strong { font-size: 11px; font-weight: 450; }
     .case-next-arrow { font-size: 20px; }
@@ -302,9 +323,9 @@
     @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
       .cursor-dot, .cursor-ring { display: block; position: fixed; z-index: 40; top: 0; left: 0; border-radius: 50%; pointer-events: none; opacity: 0; transform: translate3d(-50%, -50%, 0); transition: opacity .2s ease, width .25s ease, height .25s ease, border-color .25s ease, background .25s ease; }
       .cursor-dot.is-active, .cursor-ring.is-active { opacity: 1; }
-      .cursor-dot { width: 4px; height: 4px; background: var(--lime); }
-      .cursor-ring { width: 34px; height: 34px; border: 1px solid rgba(210,223,116,.55); }
-      .cursor-ring.is-hover { width: 58px; height: 58px; border-color: var(--lime); background: rgba(210,223,116,.08); }
+      .cursor-dot { width: 4px; height: 4px; background: var(--orange); }
+      .cursor-ring { width: 34px; height: 34px; border: 1px solid rgba(243,108,33,.55); }
+      .cursor-ring.is-hover { width: 58px; height: 58px; border-color: var(--orange); background: rgba(243,108,33,.08); }
     }
     @media (max-width: 900px) {
       .hero { height: auto; min-height: 940px; padding-top: 150px; padding-bottom: 90px; }
@@ -367,8 +388,21 @@
       .case-class b { display: inline; margin: 0 8px 0 0; }
       .case-explorer { grid-template-columns: 1fr; gap: 19px; padding-top: 19px; }
       .case-stage { min-height: 320px; }
+      .case-stage--paired { min-height: 405px; }
+      .bamboo-pair { inset: 0 3% 29px; gap: 6px; }
+      .bamboo-mascot-wrap { width: 47%; height: 82%; }
+      .bamboo-mascot-tag { top: 6%; left: 1%; padding: 6px 7px; font-size: 6px; }
+      .bamboo-device { width: clamp(135px, 39%, 184px); padding: 5px; border-radius: 26px; }
+      .bamboo-device-screen { border-radius: 20px; }
+      .bamboo-device::before { top: 8px; }
+      .bamboo-home-indicator { bottom: 8px; height: 3px; }
       .case-art { max-height: 285px; }
       .case-art.is-phone, .case-art.is-poster { height: 285px; }
+      .case-story { grid-template-columns: 1fr 1fr; margin-top: 18px; }
+      .case-story-label { grid-column: 1 / -1; padding: 15px 0 11px; }
+      .case-story-card { min-height: 0; padding: 14px 12px; }
+      .case-story-card:first-of-type { border-left: 0; }
+      .case-story-card:last-child { grid-column: 1 / -1; border-top: 1px solid var(--line); border-left: 0; }
       .case-step-list { display: flex; overflow-x: auto; gap: 7px; padding-bottom: 5px; margin-top: 16px; }
       .case-step { flex: 0 0 auto; width: auto; min-width: 112px; grid-template-columns: 24px auto; padding: 9px 11px; }
       .case-step-arrow { display: none; }
@@ -412,7 +446,7 @@
           <div class="scene-glow" aria-hidden="true"></div>
           <div class="scene-orbit" aria-hidden="true"></div>
           <div class="scene-orbit orbit-inner" aria-hidden="true"></div>
-          <a class="hero-card card-1" href="#work" aria-label="浏览萌游芍乡项目"><img src="assets/portfolio/01-peony/teaser.jpg" alt="芍药田与角色组成的乡村文旅主视觉" fetchpriority="high"><span>01 &nbsp; 萌游芍乡</span></a>
+          <a class="hero-card card-1" href="#work" aria-label="浏览萌游芍乡项目"><img src="assets/portfolio/case-crops/peony-hero-detail.jpg" alt="芍药田与角色组成的乡村文旅主视觉局部" fetchpriority="high"><span>01 &nbsp; 萌游芍乡</span></a>
           <a class="hero-card card-2" href="#work" aria-label="浏览竹竹侠优选项目"><img src="assets/portfolio/02-bamboo/teaser.jpg" alt="竹林与竹竹侠角色组成的平台主视觉" fetchpriority="high"><span>02 &nbsp; 竹竹侠优选</span></a>
           <a class="hero-card card-3" href="#work" aria-label="浏览校园视觉设计项目"><img src="assets/portfolio/03-campus/teaser.jpg" alt="校园湖景与大鹅角色组成的校园视觉" fetchpriority="high"><span>03 &nbsp; 校园视觉</span></a>
           <a class="hero-card card-4" href="#work" aria-label="浏览系列视觉设计项目"><img src="assets/portfolio/case-crops/chair-poster-study.jpg" alt="柯布西耶椅子主题海报局部" fetchpriority="high"><span>04 &nbsp; 系列视觉</span></a>
@@ -495,17 +529,23 @@
         english: "PEONY TRAILS",
         category: "乡村文旅品牌视觉",
         tags: ["品牌视觉", "IP设计", "AIGC探索"],
-        cover: "assets/portfolio/01-peony/teaser.jpg",
+        cover: "assets/portfolio/case-crops/peony-hero-detail.jpg",
         alt: "芍药田、古桥与萌宠角色组成的乡村文旅主视觉",
-        summary: "把芍药、萌宠与乡村游玩连接成一套品牌视觉提案，并继续延展角色识别与礼盒触点。",
-        focus: "从芍药文化与萌宠体验出发",
+        summary: "以陶坑白芍与萌宠体验为起点，建立一套贯穿乡野游览、角色识别与地方伴手礼的四季文旅视觉。",
+        focus: "芍药文化 × 萌宠体验 × 四季乡村游览",
         mode: "peony",
         interaction: "角色生长线",
-        hint: "点选路径节点，看品牌印象如何从主视觉走向角色与应用。",
+        hint: "沿着品牌主视觉、角色迭代与文旅触点，浏览这套乡村品牌如何逐步成形。",
+        story: [
+          { label: "PROJECT BACKGROUND", title: "资源丰富，识别仍分散", body: "陶坑白芍与萌宠资源丰富，但品牌识别仍分散，四季体验内容不足。" },
+          { label: "DESIGN GOAL", title: "串起花田与游览体验", body: "整合芍药文化与萌宠体验，建立统一视觉，提升品牌辨识与传播力。" },
+          { label: "VISUAL STRATEGY", title: "让角色成为游览向导", body: "从白芍花形、萌宠轮廓与乡野路径提取线索，延展到角色表情和地方礼盒。" }
+        ],
         steps: [
-          { label: "主视觉", title: "先走进芍药花田", body: "芍药花田、古桥与角色共同出现，组成一条可以进入的乡村游览路径。", image: "assets/portfolio/01-peony/teaser.jpg", alt: "萌游芍乡的芍药花田与角色主视觉", caption: "品牌主视觉 / 芍药 × 萌宠 × 乡野游玩" },
-          { label: "角色迭代", title: "让花朵长成一个角色", body: "从花形、服饰到配色逐轮收敛，让角色既保留芍药线索，也适合进入不同场景。", image: "assets/portfolio/case-crops/peony-character-iterations.jpg", alt: "芍药女孩角色从概念草案到最终形象的迭代", caption: "角色生成 / 形态与风格迭代" },
-          { label: "品牌触点", title: "把游览记忆带回家", body: "包装与伴手礼把角色、花卉和地方物产放进日常使用的尺度里。", image: "assets/portfolio/case-crops/peony-touchpoints.jpg", alt: "芍药花束、伴手礼包装与桃子礼盒应用", caption: "视觉延展 / 鲜花礼盒与地方物产" }
+          { label: "品牌主视觉", title: "从一条乡野路径进入芍乡", body: "花田、古桥、村落与萌宠角色共同搭出目的地想象，让地方文化先被看见，也让游览路线有了入口。", image: "assets/portfolio/case-crops/peony-hero-detail.jpg", alt: "芍药花田、古桥与萌宠角色的品牌主视觉局部", caption: "品牌主视觉 / 白芍 × 萌宠 × 乡野游玩" },
+          { label: "AIGC角色迭代", title: "让花朵长成一个向导", body: "从花冠拟人、服装结构到配色逐轮收敛，保留芍药识别线索，也让角色能自然进入游览场景。", image: "assets/portfolio/case-crops/peony-iterations.webp", alt: "芍药女孩角色从花朵拟人到最终形象的四阶段迭代", caption: "角色生成 / 造型与风格收敛", artClass: "is-transparent" },
+          { label: "表情与陪伴", title: "让角色拥有游览情绪", body: "招呼、指引、观察与陪伴等动作补足角色性格，让萌宠不只停留在主视觉，也能参与旅程叙事。", image: "assets/portfolio/case-crops/peony-expressions.webp", alt: "芍药女孩与萌宠的表情和互动动作设定", caption: "角色延展 / 表情、动作与陪伴", artClass: "is-transparent" },
+          { label: "四季伴手礼", title: "把游览记忆带回家", body: "将角色、花卉和陶坑物产组合到花礼与礼盒触点，让四季游览留下可带走、可分享的视觉记忆。", image: "assets/portfolio/case-crops/peony-gift-set.jpg", alt: "萌游芍乡芍药花礼与品牌礼盒包装设计局部", caption: "品牌延展 / 芍药花礼与地方伴手礼", artClass: "is-editorial" }
         ]
       },
       {
@@ -516,17 +556,15 @@
         cover: "assets/portfolio/02-bamboo/teaser.jpg",
         alt: "竹林场景与竹竹侠角色组成的平台主视觉",
         summary: "以竹乡守护者“竹竹侠”为平台视觉线索，连接安吉好物、竹林内容与小程序界面。",
-        focus: "让一个角色成为平台的亲切入口",
+        focus: "角色设定与小程序界面同屏呈现",
         mode: "bamboo",
-        interaction: "角色档案台",
-        hint: "切换角色设定、动作和界面，看看同一形象如何进入服务场景。",
+        interaction: "角色 × 小程序样机",
+        hint: "竹竹侠角色固定在画面左侧；切换右侧手机界面，一起浏览好物、竹迹、购物车与个人中心。",
         steps: [
-          { label: "角色档案", title: "竹林里的守护者", body: "斗笠、竹叶和护林装备组成角色的主要识别线索。", image: "assets/portfolio/case-crops/bamboo-character-profile.jpg", alt: "竹竹侠角色正面设定", caption: "角色设定 / 竹乡守护者", artClass: "" },
-          { label: "三视探索", title: "转一圈，看清轮廓", body: "正面、侧面和背面一起检查服装、帽檐与身体比例是否连贯。", image: "assets/portfolio/case-crops/bamboo-turnaround.jpg", alt: "竹竹侠角色多角度造型探索", caption: "角色设定 / 轮廓与转面" },
-          { label: "动作表情", title: "让守护有了情绪", body: "表情和动作把巡护、采摘与分享等角色状态带进视觉表达。", image: "assets/portfolio/case-crops/bamboo-expressions.jpg", alt: "竹竹侠不同表情与动作的角色设定", caption: "角色延展 / 表情与动作" },
-          { label: "好物首页", title: "从好物开始探索", body: "首页把安吉好物、内容入口与角色提示放在同一条浏览路径上。", image: "assets/portfolio/case-crops/bamboo-home-screen.jpg", alt: "竹竹侠优选小程序首页界面", caption: "界面延展 / 好物推荐", artClass: "is-phone" },
-          { label: "竹迹页面", title: "把竹林变成可探索的场景", body: "竹林插画成为内容入口，让平台不只有商品，也呈现生态主题。", image: "assets/portfolio/case-crops/bamboo-browse-screen.jpg", alt: "竹竹侠优选小程序竹林探索页面", caption: "界面延展 / 竹林探索", artClass: "is-phone" },
-          { label: "个人中心", title: "角色陪伴服务流程", body: "个人中心延续绿色识别与角色头像，承接订单和用户服务入口。", image: "assets/portfolio/case-crops/bamboo-service-screen.jpg", alt: "竹竹侠优选小程序个人中心界面", caption: "界面延展 / 用户服务", artClass: "is-phone" }
+          { label: "好物首页", title: "从安吉好物开始浏览", body: "首页以茶园主视觉、产品分类和推荐卡片组织商品入口，让竹乡特产成为体验的第一站。", image: "assets/portfolio/case-crops/bamboo-ui-home.jpg", alt: "竹竹侠优选小程序好物首页高清局部", caption: "同屏样机 / 竹竹侠角色 + 好物首页" },
+          { label: "竹迹探索", title: "把竹林变成可探索的场景", body: "竹林插画与养护信息构成内容页，角色陪伴用户从购买入口走向生态主题。", image: "assets/portfolio/case-crops/bamboo-ui-bamboo.jpg", alt: "竹竹侠优选小程序竹迹探索页面高清局部", caption: "同屏样机 / 竹竹侠角色 + 竹迹探索" },
+          { label: "购物车", title: "让地方商品顺着路径汇集", body: "购物车承接不同品类的安吉特产，并通过清晰的商品、数量和结算信息完成购买流程。", image: "assets/portfolio/case-crops/bamboo-ui-cart.jpg", alt: "竹竹侠优选小程序购物车页面高清局部", caption: "同屏样机 / 竹竹侠角色 + 购物车" },
+          { label: "个人中心", title: "让角色继续陪伴服务", body: "个人中心延续竹竹侠形象，集中呈现会员、订单与用户服务入口，让角色贯穿完整使用过程。", image: "assets/portfolio/case-crops/bamboo-ui-profile.jpg", alt: "竹竹侠优选小程序个人中心页面高清局部", caption: "同屏样机 / 竹竹侠角色 + 个人中心" }
         ]
       },
       {
@@ -599,6 +637,23 @@
       activeProjectIndex = index;
       const firstStep = project.steps[0];
       const nextProject = projects[(index + 1) % projects.length];
+      const storyMarkup = project.story ? `
+        <section class="case-story" aria-label="项目背景与设计目标">
+          <div class="case-story-label">CASE NOTES<br>项目脉络</div>
+          ${project.story.map(item => `<article class="case-story-card"><small>${item.label}</small><h3>${item.title}</h3><p>${item.body}</p></article>`).join("")}
+        </section>` : "";
+      const stageVisual = project.mode === "bamboo" ? `
+            <div class="bamboo-pair" aria-label="竹竹侠角色与小程序界面同屏样机">
+              <div class="bamboo-mascot-wrap">
+                <span class="bamboo-mascot-tag">CHARACTER / 固定展示</span>
+                <img src="assets/portfolio/case-crops/bamboo-character-cutout.webp" alt="竹竹侠竹乡守护者角色设定" decoding="async">
+              </div>
+              <div class="bamboo-device" aria-label="可切换的小程序界面样机">
+                <div class="bamboo-device-screen"><img class="case-art" id="caseArt" src="${firstStep.image}" alt="${firstStep.alt}" decoding="async"></div>
+                <span class="bamboo-home-indicator" aria-hidden="true"></span>
+              </div>
+            </div>` : `
+            <img class="case-art ${firstStep.artClass || ""}" id="caseArt" src="${firstStep.image}" alt="${firstStep.alt}" decoding="async">`;
       const steps = project.steps.map((step, stepIndex) => `
         <button class="case-step" id="caseTab-${stepIndex}" type="button" role="tab" aria-selected="${stepIndex === 0}" tabindex="${stepIndex === 0 ? 0 : -1}" aria-controls="caseStage" data-stage="${stepIndex}">
           <span class="case-step-no">0${stepIndex + 1}</span><span class="case-step-name">${step.label}</span><span class="case-step-arrow" aria-hidden="true">↗</span>
@@ -614,10 +669,11 @@
           </div>
           <div class="case-class"><b>PROJECT / ${project.category}</b>${project.focus}</div>
         </header>
+        ${storyMarkup}
         <div class="case-explorer">
-          <div class="case-stage case-stage--${project.mode}" id="caseStage" role="tabpanel" aria-live="polite" aria-labelledby="caseTab-0">
-            <img class="case-art ${firstStep.artClass || ""}" id="caseArt" src="${firstStep.image}" alt="${firstStep.alt}" decoding="async">
-            <div class="case-stage-caption"><span id="caseCaption">${firstStep.caption}</span><span>${String(index + 1).padStart(2, "0")} / 04 — VISUAL STUDY</span></div>
+          <div class="case-stage case-stage--${project.mode}${project.mode === "bamboo" ? " case-stage--paired" : ""}" id="caseStage" role="tabpanel" aria-live="polite" aria-labelledby="caseTab-0">
+            ${stageVisual}
+            <div class="case-stage-caption"><span id="caseCaption">${firstStep.caption}</span><span id="caseStepCounter">01 / ${String(project.steps.length).padStart(2, "0")} — VISUAL STUDY</span></div>
           </div>
           <aside class="case-notes">
             <p class="case-notes-label">INTERACTIVE STUDY / ${project.interaction}</p>
@@ -649,6 +705,7 @@
       art.alt = step.alt;
       art.className = `case-art ${step.artClass || ""}`.trim();
       document.getElementById("caseCaption").textContent = step.caption;
+      document.getElementById("caseStepCounter").textContent = `${String(stepIndex + 1).padStart(2, "0")} / ${String(project.steps.length).padStart(2, "0")} — VISUAL STUDY`;
       document.getElementById("caseStageTitle").textContent = step.title;
       document.getElementById("caseStageBody").textContent = step.body;
       stage.setAttribute("aria-labelledby", `caseTab-${stepIndex}`);
@@ -755,3 +812,4 @@
   </script>
 </body>
 </html>
+
